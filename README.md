@@ -22,9 +22,12 @@
 - Certificate Manager
 - Budget
 
-## Resources Used:
-https://cloudresumechallenge.dev/docs/the-challenge/aws/
-https://troy-ingram.medium.com/cloud-resume-challenge-part-1-static-s3-website-cloudfront-dns-e5556c17c33d
+## Main Run:
+- `git clone`
+- `cd terraform`
+- `terraform init`
+- `terraform apply --auto-approve`
+- `aws s3 cp modules/s3-web/website s3://$(terraform output -raw website_bucket_name)/ --recursive`
 
 ## To enable remote state:
 1. Navigate to **tf-project-aws/** from command line. Run `terraform init`.
@@ -42,3 +45,8 @@ https://troy-ingram.medium.com/cloud-resume-challenge-part-1-static-s3-website-c
 1. Open the **backend.tf**.  **COMMENT** the remote state block,  **UNCOMMENT** the local state block
 2. Run `terraform init -migrate-state`. Type "yes" to agree. Hit Enter/return.
 3. Welcome back to local state. You may now 'terraform destroy'!
+
+## Resources Used:
+https://cloudresumechallenge.dev/docs/the-challenge/aws/
+https://troy-ingram.medium.com/cloud-resume-challenge-part-1-static-s3-website-cloudfront-dns-e5556c17c33d
+https://learn.hashicorp.com/tutorials/terraform/cloudflare-static-website
