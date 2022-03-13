@@ -4,15 +4,10 @@ variable "prefix" {
   description = "The prefix for all resources"
 }
 
-variable "domain_name" {
+variable "aws_region" {
   type        = string
-  default     = "binbashburns.com"
-  description = "The domain name for the website"
+  description = "The AWS region to put the bucket into"
+  default     = "us-east-1"
 }
 
-variable "common_tags" {
-    description = "Common tags you want applied to all components."
-    default = {
-      Project = "binbashburns.com"
-    }
-}
+variable "site_domain" {}
