@@ -8,8 +8,13 @@ variable "kms_key_arn" {
 }
 
 variable "domain_name" {
-  type = string
+  type        = string
   description = "The domain name for the website."
+}
+
+variable "bucket_name" {
+  type        = string
+  description = "The bucket name for the website"
 }
 
 variable "common_tags" {

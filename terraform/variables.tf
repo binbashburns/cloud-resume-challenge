@@ -10,9 +10,15 @@ variable "domain_name" {
   description = "The domain name for the website"
 }
 
+variable "bucket_name" {
+  type        = string
+  default     = "binbashburns.com"
+  description = "The bucket name for the website"
+}
+
 variable "common_tags" {
-    description = "Common tags you want applied to all components."
-    default = {
-      Project = "binbashburns.com"
-    }
+  description = "Common tags you want applied to all components."
+  default = {
+    Project = "binbashburns.com"
+  }
 }
