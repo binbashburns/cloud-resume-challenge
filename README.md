@@ -22,6 +22,19 @@
 - Certificate Manager
 - Budget
 
+## Get Ready
+- direnv install
+- Create file in `cloud-resume-challenge/terraform/` called `terraform.tfvars` and input the following:
+```
+aws_region  = "<region-name>"
+site_domain = "<replacethisurl.com>"
+```
+- Create file at root directory `cloud-resume-challenge/` called `.envrc` and input the following:
+```
+export AWS_PROFILE=<desired-profile>
+export CLOUDFLARE_API_TOKEN=<cloudflare-token>
+```
+
 ## Main Run:
 - `git clone`
 - `cd terraform`
