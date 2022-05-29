@@ -1,3 +1,10 @@
+# Imports random string resource
+resource "random_string" "random" {
+  length  = 4
+  special = false
+  upper   = false
+}
+
 resource "aws_kms_key" "terraform-bucket-key" {
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10
@@ -5,6 +12,6 @@ resource "aws_kms_key" "terraform-bucket-key" {
 }
 
 resource "aws_kms_alias" "key-alias" {
-  name          = "alias/terraform-bucket-key"
+  name          = "alias/terraform-bucket-key-${random_string.random.result}"
   target_key_id = aws_kms_key.terraform-bucket-key.key_id
 }

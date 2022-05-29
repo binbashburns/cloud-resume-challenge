@@ -2,6 +2,11 @@ provider "aws" {
   region = var.aws_region
 }
 
+module "vpc" {
+  source = "./modules/vpc"
+  prefix    = var.prefix
+}
+
 module "budget" {
   source    = "./modules/budget"
   prefix    = var.prefix
@@ -27,4 +32,17 @@ module "s3-web" {
 
 module "dynamo" {
   source = "./modules/dynamodb"
+}
+
+module "codebuild" {
+  source = "./modules/codebuild"
+  prefix    = var.prefix
+  vpc_id =  module.vpc.vpc_id
+  subnet-1-arn = module.vpc.subnet-1-arn
+  subnet-2-arn = module.vpc.subnet-2-arn
+}
+
+module "codepipeline" {
+  source = "./modules/codepipeline"
+  prefix    = var.prefix
 }

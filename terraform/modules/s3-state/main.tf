@@ -7,7 +7,7 @@ resource "random_string" "random" {
 
 # Creates S3 bucket for Terraform State
 resource "aws_s3_bucket" "terraform-state" {
-  bucket        = join("-", ["${var.prefix}-tf-state-", random_string.random.result])
+  bucket        = "${var.prefix}-tf-state-${random_string.random.result}"
   force_destroy = true
 }
 
